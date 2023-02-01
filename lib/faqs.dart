@@ -56,7 +56,7 @@ class _FaqState extends State<Faq> {
                   body: Container(
                     //decorating the expansion panel
                     decoration: BoxDecoration(
-                      color: Color.fromARGB(66, 255, 153, 0),
+                      color: const Color.fromARGB(66, 255, 153, 0),
                       borderRadius: BorderRadius.circular(8),
                       border: Border.all(width: 2.0, color: Colors.white),
                     ),
@@ -123,6 +123,7 @@ class _FaqState extends State<Faq> {
       // img: 'assets/images/android_img.png',
     ),
     ItemModel(
+        expanded: true,
         headerItem: 'What are antimicrobial agents?',
         discription:
             'The terms "antimicrobials" or "antimicrobial agents" simply refer to all types of natural and synthetic drugs which may kill or slow down the growth of microorganisms. These include antibiotics, anti-fungals, and household disinfectants. Antimicrobial agents are widely used for the treatment and prevention of human and animal diseases, and in the agriculture industry they are also used to promote growth.',
