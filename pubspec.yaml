@@ -42,6 +42,8 @@ dependencies:
   share_plus: ^6.3.0
   outline_search_bar: ^2.3.0
   dotted_border: ^2.0.0+3
+  flutter_tflite: ^1.0.1
+  flutter_spinkit: ^5.1.0
 
 dev_dependencies:
   flutter_test:
@@ -69,6 +71,7 @@ flutter:
   assets:
     - assets/images/
     - assets/drug_images/
+    - assets/model/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

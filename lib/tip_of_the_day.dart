@@ -5,7 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:share_plus/share_plus.dart';
 
 class Tip extends StatefulWidget {
-  Tip({Key? key}) : super(key: key);
+  const Tip({Key? key}) : super(key: key);
 
   @override
   State<Tip> createState() => _TipState();
@@ -46,6 +46,13 @@ class _TipState extends State<Tip> {
       resizeToAvoidBottomInset: true,
       backgroundColor: Colors.orange,
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: (() => Navigator.pop(context)),
+          icon: const Icon(
+            Icons.chevron_left,
+            size: 45,
+          ),
+        ),
         backgroundColor: Colors.orange,
         centerTitle: true,
         elevation: 0,

@@ -1,5 +1,9 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:amr_app/drawer.dart';
+import 'package:amr_app/results.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 
 class HomePage extends StatefulWidget {
@@ -10,6 +14,69 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  bool imagePicked = false;
+  String? pickedImagePath;
+  var picker = ImagePicker();
+
+  _popupDialog(BuildContext context) {
+    return AlertDialog(
+        title: const Text(
+          "Select Image Source",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 19,
+            color: Color.fromARGB(255, 195, 47, 3),
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        content: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // PICKING IMAGE FROM CAMERA
+            ListTile(
+              title: const Text("Pick From Camera"),
+              leading: const Icon(
+                FontAwesomeIcons.camera,
+                color: Colors.black,
+                size: 30,
+              ),
+              onTap: () async {
+                final XFile? image =
+                    await picker.pickImage(source: ImageSource.camera);
+
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: ((context) => Results(imagePath: image!.path)),
+                  ),
+                );
+              },
+            ),
+
+            // PICKING IMAGE FROM GALLERY
+            ListTile(
+              title: const Text("Pick From Gallery"),
+              leading: const Icon(
+                FontAwesomeIcons.image,
+                color: Colors.black,
+                size: 30,
+              ),
+              onTap: () async {
+                final XFile? image =
+                    await picker.pickImage(source: ImageSource.gallery);
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: ((context) => Results(imagePath: image!.path)),
+                  ),
+                );
+              },
+            ),
+          ],
+        ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -241,10 +308,9 @@ class _HomePageState extends State<HomePage> {
       // ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          print("THE CAMERA BUTTON HAS BEEN PRESSED");
-          var picker = ImagePicker();
-          var image = await picker.pickImage(source: ImageSource.camera);
-          print("THE PICKED IMAGE PATH IS: ${image!.path}");
+          showDialog(
+              context: context,
+              builder: (BuildContext context) => _popupDialog(context));
         },
         backgroundColor: Colors.black,
         child: const Icon(

@@ -11,7 +11,7 @@ class MyDrawer extends StatelessWidget {
         children: [
           DrawerTheme(
             data: const DrawerThemeData(),
-            child: Container(
+            child: SizedBox(
               height: 200,
               child: Center(
                 child: Image.asset("assets/images/logo.png"),

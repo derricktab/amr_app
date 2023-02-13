@@ -14,7 +14,15 @@ class _DrugsAndDosagesState extends State<DrugsAndDosages> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        
         title: const Text("Drugs and Dosages"),
+        leading: IconButton(
+          onPressed: (() => Navigator.pop(context)),
+          icon: const Icon(
+            Icons.chevron_left,
+            size: 45,
+          ),
+        ),
       ),
       body: ListView(
         children: [

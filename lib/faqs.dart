@@ -29,6 +29,13 @@ class _FaqState extends State<Faq> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: (() => Navigator.pop(context)),
+          icon: const Icon(
+            Icons.chevron_left,
+            size: 45,
+          ),
+        ),
         toolbarHeight: 70,
         backgroundColor: Colors.orange,
         elevation: 0,

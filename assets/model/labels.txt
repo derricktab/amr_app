@@ -1,0 +1,5 @@
+0 Ampicillin
+1 Clindamycin
+2 Metronidazole
+3 AMOXICILLIN
+4 Doxycycline

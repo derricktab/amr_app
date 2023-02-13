@@ -24,6 +24,13 @@ class _DrugScreenState extends State<DrugScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: (() => Navigator.pop(context)),
+          icon: const Icon(
+            Icons.chevron_left,
+            size: 45,
+          ),
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: Text("${widget.drugName} Dosage"),
