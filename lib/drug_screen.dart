@@ -5,15 +5,13 @@ class DrugScreen extends StatefulWidget {
   final String drugName;
   final String description;
   final String imagePath;
-  final String adultDosage;
-  final String childDosage;
+  final String sideeffects;
   const DrugScreen(
       {super.key,
       required this.drugName,
       required this.description,
       required this.imagePath,
-      required this.adultDosage,
-      required this.childDosage});
+      required this.sideeffects});
 
   @override
   State<DrugScreen> createState() => _DrugScreenState();
@@ -33,7 +31,7 @@ class _DrugScreenState extends State<DrugScreen> {
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text("${widget.drugName} Dosage"),
+        title: Text("${widget.drugName} Side Effects"),
         centerTitle: true,
       ),
       body: ListView(
@@ -69,7 +67,7 @@ class _DrugScreenState extends State<DrugScreen> {
           ),
           const SizedBox(height: 40),
 
-          // ADULT DOSAGE
+          // SIDE EFFECTS
           Container(
             margin: const EdgeInsets.only(right: 240, left: 10),
             padding: const EdgeInsets.symmetric(
@@ -81,7 +79,7 @@ class _DrugScreenState extends State<DrugScreen> {
               borderRadius: BorderRadius.circular(20),
             ),
             child: const Text(
-              "ADULT DOSE",
+              "SIDE EFFECTS",
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 15,
@@ -104,50 +102,11 @@ class _DrugScreenState extends State<DrugScreen> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: Text(widget.adultDosage),
+              child: Text(widget.sideeffects),
             ),
           ),
 
           const SizedBox(height: 20),
-
-          // PEDIATRIC DOSAGE
-          Container(
-            margin: const EdgeInsets.only(right: 240, left: 10),
-            padding: const EdgeInsets.symmetric(
-              vertical: 8,
-            ),
-            width: MediaQuery.of(context).size.width * 0.1,
-            decoration: BoxDecoration(
-              color: Colors.orange,
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: const Text(
-              "CHILD DOSE",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-
-          // CHILD DOSAGE TEXT
-          DottedBorder(
-            borderPadding:
-                const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-            radius: const Radius.circular(20),
-            borderType: BorderType.RRect,
-            padding: const EdgeInsets.symmetric(
-              horizontal: 30,
-              vertical: 25,
-            ),
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Text(widget.childDosage),
-            ),
-          ),
         ],
       ),
     );
