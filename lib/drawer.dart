@@ -59,7 +59,7 @@ class MyDrawer extends StatelessWidget {
                     size: 35,
                   ),
                   title: Text(
-                    "Drugs & Dosages",
+                    "Drugs & Side Effects",
                     style: TextStyle(color: Colors.grey[900], fontSize: 16),
                   ),
                 ),

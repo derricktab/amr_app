@@ -1,4 +1,4 @@
-import 'package:amr_app/drugs_and_dosages.dart';
+import 'package:amr_app/drugs_and_side_effects.dart';
 import 'package:amr_app/faqs.dart';
 import 'package:amr_app/home.dart';
 import 'package:amr_app/tip_of_the_day.dart';

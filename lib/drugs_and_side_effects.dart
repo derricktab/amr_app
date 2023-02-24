@@ -15,7 +15,7 @@ class _DrugsAndDosagesState extends State<DrugsAndDosages> {
     return Scaffold(
       appBar: AppBar(
         
-        title: const Text("Drugs and Dosages"),
+        title: const Text("Drugs and Side Effects"),
         leading: IconButton(
           onPressed: (() => Navigator.pop(context)),
           icon: const Icon(
