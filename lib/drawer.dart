@@ -90,6 +90,27 @@ class MyDrawer extends StatelessWidget {
                   thickness: 1,
                 ),
 
+                // MEASURES TO REDUCE RISK
+                ListTile(
+                  onTap: () {
+                    Navigator.pushNamed(context, "measures");
+                  },
+                  leading: const Icon(
+                    Icons.trending_down,
+                    color: Colors.white,
+                    size: 35,
+                  ),
+                  title: Text(
+                    "Measures to reduce risk",
+                    style: TextStyle(color: Colors.grey[900], fontSize: 16),
+                  ),
+                ),
+
+                const Divider(
+                  color: Colors.white,
+                  thickness: 1,
+                ),
+
                 // FREQUENTLY ASKED QUESTIONS
                 ListTile(
                   onTap: () {

@@ -1,3 +1,4 @@
+import 'package:amr_app/measures.dart';
 import 'package:amr_app/quiz/amr_risk_calculator.dart';
 import 'package:amr_app/drugs_and_side_effects.dart';
 import 'package:amr_app/faqs.dart';
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
         "page4": (context) => const Page4(),
         "page5": (context) => const Page5(),
         "results": (context) => const Results(),
+        "measures": (context) => const Measures(),
       },
       title: 'MyAMR Alert App',
       theme: ThemeData(

@@ -90,7 +90,6 @@ class _ResultsState extends State<Results> {
   @override
   Widget build(BuildContext context) {
     calculateScore();
-    score = 2;
 
     bool low = score < 4 ? true : false;
     bool moderate = score >= 4 ? true : false;
@@ -103,7 +102,7 @@ class _ResultsState extends State<Results> {
             : "MODERATE RISK";
 
     String recommendation = high
-        ? "Based on your responses, you have a high risk for AMR. We strongly recommend that you schedule an appointment with your healthcare provider as soon as possible to discuss your results and receive further testing and treatment options."
+        ? "Based on your answers, it appears that you have a high risk of developing antimicrobial resistance. This means that you may be more susceptible to infections that are difficult to treat with antibiotics. \nTo reduce your risk, Click the below button to see the steps to take."
         : low
             ? "Great news! Your results indicate that you have a low risk for antimicrobial resistance. Keep up the good work by using antibiotics responsibly, practicing good hygiene, and following healthcare advice."
             : "Your results show a moderate risk of AMR. This means that you may be at risk of developing antibiotic resistance and it's important to take action now to reduce your risk. Simple steps like finishing prescribed antibiotics, not sharing antibiotics, and avoiding unnecessary antibiotic use can help.";
@@ -154,7 +153,7 @@ class _ResultsState extends State<Results> {
             )
           ],
         ),
-        child: Column(
+        child: ListView(
           children: [
             // IMAGE
             Image.asset(high
@@ -162,11 +161,13 @@ class _ResultsState extends State<Results> {
                 : low
                     ? "assets/images/success.png"
                     : "assets/images/moderate.jpg"),
-            const SizedBox(height: 20),
+
+            const SizedBox(height: 10),
 
             // RISK STATUS
             Text(
               "$riskText (${score * 10}%)",
+              textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 32,
                 fontWeight: FontWeight.bold,
@@ -177,25 +178,56 @@ class _ResultsState extends State<Results> {
             const SizedBox(height: 20),
 
             // RECOMMENDATION TEXT
-            Container(
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: riskColor,
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: riskColor,
+                  ),
                 ),
-              ),
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20,
-                vertical: 15,
-              ),
-              child: AutoSizeText(
-                recommendation,
-                style: const TextStyle(
-                  fontSize: 17,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 15,
+                ),
+                child: AutoSizeText(
+                  recommendation,
+                  style: const TextStyle(
+                    fontSize: 19,
+                  ),
                 ),
               ),
             ),
 
             const SizedBox(height: 30),
+
+            // STEPS
+            InkWell(
+              onTap: () {
+                Navigator.pushReplacementNamed(context, "measures");
+              },
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.6,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 30,
+                  vertical: 10,
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.orange,
+                ),
+                child: const Text(
+                  "STEPS TO REDUCE RISK",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 15),
 
             // CLOSE BUTTON
             InkWell(
@@ -206,7 +238,7 @@ class _ResultsState extends State<Results> {
                 width: MediaQuery.of(context).size.width * 0.6,
                 padding: const EdgeInsets.symmetric(
                   horizontal: 30,
-                  vertical: 15,
+                  vertical: 10,
                 ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
@@ -216,13 +248,14 @@ class _ResultsState extends State<Results> {
                   "CLOSE",
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 22,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
                 ),
               ),
             ),
+            const SizedBox(height: 20),
           ],
         ),
       ),
