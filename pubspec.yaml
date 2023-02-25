@@ -44,6 +44,8 @@ dependencies:
   dotted_border: ^2.0.0+3
   flutter_spinkit: ^5.1.0
   auto_size_text: ^3.0.0
+  shared_preferences: ^2.0.18
+  animated_snack_bar: ^0.3.0
 
 dev_dependencies:
   flutter_test:
