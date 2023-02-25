@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class Tip extends StatefulWidget {
   const Tip({Key? key}) : super(key: key);
@@ -12,8 +13,19 @@ class Tip extends StatefulWidget {
 }
 
 class _TipState extends State<Tip> {
-  String textShared =
-      "Antimicrobial resistance (AMR) occurs when pathogens change and find ways to resist the effects of antibiotics.";
+  List<String> tips = [
+    "AMR causes at least 700,000 deaths globally each year, and this number is expected to rise to 10 million by 2050 if action is not taken.",
+    "Antibiotics don't work against viruses like colds and flu.",
+    "Overusing antibiotics can lead to antibiotic resistance.",
+    "Resistance can spread from person to person and between animals and humans.",
+    "Antibiotics are often prescribed unnecessarily for illnesses like sore throats and ear infections.",
+    "Antibiotics can also be found in the food we eat.",
+    "Proper hand washing and infection control can help prevent the spread of resistant bacteria.",
+    "Antibiotic resistance could cause up to 10 million deaths annually by 2050.",
+    "You can help fight AMR by only taking antibiotics when necessary and completing the full course.",
+    "Some common infections that can become resistant to antibiotics include urinary tract infections, pneumonia, tuberculosis, and sexually transmitted infections.",
+    "Prevention is key to reducing the spread of AMR. Simple steps like washing your hands regularly, practicing safe sex, and getting vaccinated can all help reduce the need for antibiotics.",
+  ];
 
   static const int pink = 0xFFeb406a;
   var date = "";
@@ -42,6 +54,8 @@ class _TipState extends State<Tip> {
 
   @override
   Widget build(BuildContext context) {
+    int randomNumber = Random().nextInt(10) + 1;
+
     return Scaffold(
       resizeToAvoidBottomInset: true,
       backgroundColor: Colors.orange,
@@ -126,8 +140,8 @@ class _TipState extends State<Tip> {
                                   SizedBox(
                                     height: MediaQuery.of(context).size.height *
                                         0.25,
-                                    child: Text(
-                                      textShared,
+                                    child: AutoSizeText(
+                                      tips[randomNumber],
                                       overflow: TextOverflow.ellipsis,
                                       maxLines: 10,
                                       style: const TextStyle(
@@ -164,7 +178,7 @@ class _TipState extends State<Tip> {
                                         ),
                                         // backgroundColor: ,
                                         onPressed: () async {
-                                          await Share.share(textShared);
+                                          await Share.share(tips[randomNumber]);
                                         },
                                         child: Row(
                                           mainAxisAlignment:

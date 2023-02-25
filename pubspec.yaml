@@ -43,6 +43,7 @@ dependencies:
   outline_search_bar: ^2.3.0
   dotted_border: ^2.0.0+3
   flutter_spinkit: ^5.1.0
+  auto_size_text: ^3.0.0
 
 dev_dependencies:
   flutter_test:

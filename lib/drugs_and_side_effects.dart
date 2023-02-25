@@ -26,7 +26,7 @@ class _DrugsAndDosagesState extends State<DrugsAndDosages> {
       "name": "Metronidazole",
       "description":
           "It is used to treat bacterial infections in different areas of the body. The extended release tablets are used to treat women with vaginal infections. (bacterial vaginosis). It works by killing bacteria or preventing their growth.",
-      "img_url": "assets/drug_images/metro.png",
+      "img_url": "assets/drug_images/metro.jpg",
       "side_effects":
           "Agitation, Backpain,blindness,blurred vision,burning, numbness,tingling or painful sensations in the hands or feet, changes in speech patterns,confusion, decreased vision,depression,diziness,drowsiness, eyepain, fever, headache, irritability,lack of coordination, nausea, seeing or hearing things that are not there, seizures,shakiness and unsteady walk,slurred speech, trouble speaking,unsteadiness, trembling or other problems with muscle control or coordination,unusual tiredness or weakness, vomiting, weakness in the arms, hands, legs or feet",
     },
@@ -63,8 +63,35 @@ class _DrugsAndDosagesState extends State<DrugsAndDosages> {
     },
   ];
 
+  List<Map<String, dynamic>> filteredDrugs = [];
+  bool isSearching = false;
+
+  void _filterDrugs(String query) {
+    setState(() {
+      filteredDrugs = drugs
+          .where((drug) => drug['name']
+              .toString()
+              .toLowerCase()
+              .contains(query.toLowerCase()))
+          .toList();
+
+      isSearching = true;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    List<Map<String, dynamic>> drugsToDisplay = [];
+    // SETTING THE DRUGS LIST
+
+    if (isSearching && filteredDrugs.isNotEmpty) {
+      setState(() {
+        drugsToDisplay = filteredDrugs;
+      });
+    } else {
+      drugsToDisplay = drugs;
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Drugs and Side Effects"),
@@ -93,43 +120,68 @@ class _DrugsAndDosagesState extends State<DrugsAndDosages> {
             hintText: 'Search Drug',
             elevation: 5,
             clearButtonColor: Colors.black,
+            onKeywordChanged: (query) {
+              if (filteredDrugs.isEmpty) {
+                setState(() {
+                  isSearching = false;
+                });
+              }
+
+              // PERFORM THE SEARCH
+              _filterDrugs(query);
+            },
           ),
 
-          // LIST OF DRUGS
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: drugs.map((drug) {
-              return InkWell(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return DrugScreen(
-                          drugName: drug["name"],
-                          description: drug["description"],
-                          sideeffects: drug["side_effect"],
-                          imagePath: drug["image_url"],
-                        );
-                      },
-                    ),
-                  );
-                },
-                child: Card(
-                  margin: const EdgeInsets.symmetric(
-                    horizontal: 15,
-                  ),
-                  elevation: 5,
-                  child: Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 17, horizontal: 20),
-                    child: const Text("Amoxicillin"),
+          if (isSearching && filteredDrugs.isEmpty)
+            Padding(
+              padding: EdgeInsets.only(
+                  top: MediaQuery.of(context).size.height * 0.3),
+              child: const Center(
+                child: Text(
+                  "No Drugs Found",
+                  style: TextStyle(
+                    fontSize: 18,
                   ),
                 ),
-              );
-            }).toList(),
-          )
+              ),
+            ),
+
+          // LIST OF DRUGS
+          if (filteredDrugs.isNotEmpty || isSearching == false)
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: drugsToDisplay.map((drug) {
+                return InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return DrugScreen(
+                            drugName: drug["name"],
+                            description: drug["description"],
+                            sideeffects: drug["side_effects"],
+                            imagePath: drug["img_url"],
+                          );
+                        },
+                      ),
+                    );
+                  },
+                  child: Card(
+                    margin: const EdgeInsets.symmetric(
+                      horizontal: 15,
+                    ),
+                    elevation: 5,
+                    child: Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 17, horizontal: 20),
+                      child: Text(drug["name"]),
+                    ),
+                  ),
+                );
+              }).toList(),
+            )
         ],
       ),
     );

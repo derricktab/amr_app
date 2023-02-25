@@ -65,10 +65,11 @@ class _HomePageState extends State<HomePage> {
               vertical: 20,
             ),
             child: const Text(
-              "Antimicrobial Resistance(AMR) happens when microorganisms (such as bacteria, fungi, viruses, and parasites) change when they are exposed to antimicrobial drugs (such as antibiotics, antifungals, antivirals, antimalarials, and anthelmintics). Microorganisms that develop antimicrobial resistance are sometimes referred to as 'superbugs'. As a result, the medicines become ineffective and infections persist in the body, increasing the risk of spread to others.",
+              "Antimicrobial resistance (AMR) is the ability of microorganisms such as bacteria, viruses, fungi, and parasites to resist the effects of antimicrobial drugs that were previously effective in treating infections. This means that the microorganisms continue to grow and cause infection, even when treated with antimicrobial drugs that would normally be effective.",
               textAlign: TextAlign.justify,
               style: TextStyle(
-                fontSize: 16,
+                fontSize: 17,
+                letterSpacing: 0.6,
               ),
             ),
           ),
@@ -106,10 +107,10 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               children: [
                 const Text(
-                  "Antimicrobial Resistance(AMR) is caused by the following: ",
+                  "The development of AMR is a natural process, but it has been accelerated by factors such as the overuse and misuse of antimicrobial drugs, poor infection control practices, and the lack of development of new antimicrobial drugs. The consequences of AMR can be severe and include increased morbidity and mortality, longer hospital \nAntimicrobial Resistance(AMR) is caused by the following: ",
                   textAlign: TextAlign.justify,
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 17,
                   ),
                 ),
                 const SizedBox(height: 10),
