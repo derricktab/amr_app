@@ -27,6 +27,7 @@ class _TipState extends State<Tip> {
     "Prevention is key to reducing the spread of AMR. Simple steps like washing your hands regularly, practicing safe sex, and getting vaccinated can all help reduce the need for antibiotics.",
   ];
 
+
   static const int pink = 0xFFeb406a;
   var date = "";
 

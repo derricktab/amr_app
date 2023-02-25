@@ -64,6 +64,22 @@ class MyDrawer extends StatelessWidget {
                   ),
                 ),
 
+                // AMR RISK CALCULATOR
+                ListTile(
+                  onTap: () {
+                    Navigator.pushNamed(context, "amr_risk_calculator");
+                  },
+                  leading: const Icon(
+                    Icons.medication_liquid_rounded,
+                    color: Colors.white,
+                    size: 35,
+                  ),
+                  title: Text(
+                    "AMR RISK CALCULATOR",
+                    style: TextStyle(color: Colors.grey[900], fontSize: 16),
+                  ),
+                ),
+
                 const Divider(
                   color: Colors.white,
                   thickness: 1,
