@@ -58,7 +58,6 @@ class LoginPage extends StatelessWidget {
                       onPressed: () {},
                       child: Text('Log in'),
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.blue.shade800,
                         padding: EdgeInsets.symmetric(horizontal: 32),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16),
